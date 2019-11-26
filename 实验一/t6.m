@@ -1,0 +1,22 @@
+imgname = '6.tif';
+a = imread(imgname);
+db = double(a);
+rotate = imrotate(a,30);
+figure(1);
+subplot(2,2,1);imshow(a);
+title('原图');
+subplot(2,2,2);imshow(uint8(rotate));
+title('旋转后图形');
+fdb = fft2(db);
+fdb = fftshift(fdb);
+fdb = abs(fdb);
+ldb = log(fdb+1);
+frotate = fft2(rotate);
+frotate = fftshift(frotate);
+frotate = abs(frotate);
+lrotate = log(frotate+1);
+
+subplot(2,2,3);imshow(ldb,[]);
+title('原图的频谱图');
+subplot(2,2,4);imshow(lrotate,[]);
+title('旋转后的频谱图');

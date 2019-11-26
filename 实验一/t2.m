@@ -1,0 +1,37 @@
+imgname1='2_1.tif';
+imgname2='2_2.tif';
+A = imread(imgname1);
+B = imread(imgname2);
+%A = A(1:1:452,1:1:540,1:1:3);
+%B = B(1:1:452,1:1:540,1:1:3);
+A1 = im2double(A); %将数据转化成double类型
+B1 = im2double(B);
+multi = immultiply(A,B);
+multi1 = immultiply(A1,B1);
+figure(1);
+subplot(1,2,1);imshow(A);
+subplot(1,2,2);imshow(B);
+title('原图');
+figure(2);
+subplot(1,2,1),imshow(multi);
+subplot(1,2,2),imshow(multi1);
+title('相乘操作后');
+figure(3);
+div = imdivide(A,B);
+div1 = imdivide(A1,B1);
+subplot(1,2,1),imshow(div);
+subplot(1,2,2),imshow(div1);
+title('相除操作后');
+figure(4);
+
+add = imadd(A,B);
+add1 = imadd(A1,B1);
+subplot(1,2,1),imshow(add);
+subplot(1,2,2),imshow(add1);
+title('相加操作后');
+figure(5);
+sub = imsubtract(A,B);
+sub1 = imsubtract(A1,B1);
+subplot(1,2,1),imshow(sub);
+subplot(1,2,2),imshow(sub1);
+title('相减操作后');
